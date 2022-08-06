@@ -25,13 +25,18 @@ listlen = len(principles)
 awslp = [principles,paragraphs]
 
 def gameloop(response=0):
-  response = input("Welcome to the AWS Leadership Principle Quiz\nGiven the paragraph, enter the matching Leadership Principle. Press any key to continue\n" if response == 0 else "Press ""q"" to exit or any key to continue.")
+    # TODO: Decouple the lists from the function, have the function accept two lists as arguments
+  response = input("Welcome to the AWS Leadership Principle Quiz\nGiven the paragraph, enter the matching Leadership Principle. Press any key to continue\n" if response == 0 else "To quit enter 'q' or any key to continue.\n")
   if response != "q":
     rand = random.randint(0,listlen-1)
+    paragraph = awslp[1][rand]
+    # sentence = 
     response = input(awslp[1][rand]+"\n")
+    # TODO: Take a random sentence from the paragraph to make it harder
     answer = awslp[0][rand]
     if response == answer:
         print("you're good")
+        # TODO: Allow a varying level of accuracy and response based on number of matching words
     else:
         print("That's not what what we were looking for, the answer is " + answer)
     gameloop(response)
