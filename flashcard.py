@@ -2,10 +2,9 @@
 # So far I've got the leadership principles to work with, but it could be made more generic.
 
 import re
-
+from random import choice
 principles = []
-details = []
-
+paragraphs = []
 file = open("awslp.txt","r")
 count = 0
 for line in file:
@@ -14,9 +13,8 @@ for line in file:
         principles.append(newline)
     else:
         newline = line.replace("\n", '')
-        details.append(newline)
+        paragraphs.append(newline)
     count+=1
-
-lpdict = dict(zip(principles, details))    
-
-print(lpdict)
+awslp = dict(zip(principles, paragraphs))
+   
+print(choice(paragraphs))
