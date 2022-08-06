@@ -39,7 +39,7 @@ def gameloop(response=0):
     response = input(prompt+"\n")
     # Take a random sentence from the paragraph to make it harder
     answer = awslp[0][rand]
-    if response == answer:
+    if response.lower() == answer.lower():
         print("you're good")
         # TODO: Allow a varying level of accuracy and response based on number of matching words
     else:
