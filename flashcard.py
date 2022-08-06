@@ -24,15 +24,20 @@ for line in file:
 listlen = len(principles)
 awslp = [principles,paragraphs]
 
+## pattern: Starts with upercase letter, then anything that is not puctuation (.!?), then ends with punctuation
+pat = re.compile(r'([A-Z][^\.!?]*[\.!?])', re.M)
+
 def gameloop(response=0):
     # TODO: Decouple the lists from the function, have the function accept two lists as arguments
   response = input("Welcome to the AWS Leadership Principle Quiz\nGiven the paragraph, enter the matching Leadership Principle. Press any key to continue\n" if response == 0 else "To quit enter 'q' or any key to continue.\n")
   if response != "q":
     rand = random.randint(0,listlen-1)
     paragraph = awslp[1][rand]
-    # sentence = 
-    response = input(awslp[1][rand]+"\n")
-    # TODO: Take a random sentence from the paragraph to make it harder
+    # Take a random sentence from the paragraph to make it harder
+    sentences = pat.findall(paragraph)
+    prompt = choice(sentences)
+    response = input(prompt+"\n")
+    # Take a random sentence from the paragraph to make it harder
     answer = awslp[0][rand]
     if response == answer:
         print("you're good")
