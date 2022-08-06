@@ -19,22 +19,23 @@ for line in file:
 # I was going to do this with a dictionary, 
 # and found this cool method to create a dict from two lists
 # awslp = dict(zip(principles, paragraphs))
+#
+#Some necessary globals for the game to work
 listlen = len(principles)
-rand = random.randint(0,listlen-1)
 awslp = [principles,paragraphs]
-response = input(awslp[1][rand]+"\n")
-answer = awslp[0][rand]
-if response == answer:
-    print("you're good")
-else:
-    print("try again?")
-# print(question)
-# # Make a repeatable game
-# def gameloop(response=0):
-#   response = input("Do you want to play a game?" if response == 0 else "Do you want to play again?")
-#   if response == "yes":
-#     gameloop(response)
-#   else:
-#     print("GAME OVER")
-# # Then be able to guess the answer
-# gameloop()
+
+def gameloop(response=0):
+  response = input("Welcome to the AWS Leadership Principle Quiz\nGiven the paragraph, enter the matching Leadership Principle. Press any key to continue\n" if response == 0 else "Press ""q"" to exit or any key to continue.")
+  if response != "q":
+    rand = random.randint(0,listlen-1)
+    response = input(awslp[1][rand]+"\n")
+    answer = awslp[0][rand]
+    if response == answer:
+        print("you're good")
+    else:
+        print("That's not what what we were looking for, the answer is " + answer)
+    gameloop(response)
+  else:
+    print("GAME OVER")
+
+gameloop()
