@@ -38,7 +38,7 @@ def gameloop(response=0):
     # Take a random sentence from the paragraph to make it harder
     sentences = pat.findall(paragraph)
     words = patw.findall(paragraph)
-    print(words)
+    # print(words)
     prompt = choice(sentences)
     response = input(prompt+"\n")
     answer = awslp[0][rand]
