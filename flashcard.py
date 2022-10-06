@@ -21,7 +21,7 @@ for line in file:
 # and found this cool method to create a dict from two lists
 # awslp = dict(zip(principles, paragraphs))
 #
-#Some necessary globals for the game to work
+#Some necessary global variables for the game to work
 listlen = len(principles)
 awslp = [principles,paragraphs]
 
@@ -31,7 +31,10 @@ patw = re.compile(r'(\w+)', re.M)
 
 def gameloop(response=0):
     # TODO: Decouple the lists from the function, have the function accept two lists as arguments
-  response = input("Welcome to the AWS Leadership Principle Quiz!\nGiven the sentence, enter the matching Leadership Principle.\nPress any key to continue or 'q' to quit\n" if response == 0 else "Press any key to continue or 'q' to quit\n")
+  firstvar = "Welcome to the AWS Leadership Principle Quiz!\nGiven the sentence, enter the matching Leadership Principle.\nPress any key to continue or 'q' to quit\n"
+  secondvar = "Press any key to continue or 'q' to quit\n"
+  response = input(firstvar if response == 0 else secondvar)
+
   if response != "q":
     rand = random.randint(0,listlen-1)
     paragraph = awslp[1][rand]
